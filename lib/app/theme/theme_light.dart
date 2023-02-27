@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:guvenle_kirala_study_case/app/app_defaults.dart';
+import 'package:guvenle_kirala_study_case/app/constants/color_constants.dart';
 
 final ThemeData lightTheme = ThemeData(
   fontFamily: GoogleFonts.montserrat().fontFamily,
@@ -99,69 +100,69 @@ final ThemeData lightTheme = ThemeData(
       fontWeight: FontWeight.w400,
     ),
   ),
-  textTheme: const TextTheme(
-    displayLarge: TextStyle(
+  textTheme: TextTheme(
+    displayLarge: const TextStyle(
       color: Color(0xFFB53D96),
       fontSize: 96,
       fontWeight: FontWeight.w700,
     ),
-    displayMedium: TextStyle(
+    displayMedium: const TextStyle(
       color: Color(0xff3d21de),
       fontSize: 60,
       fontWeight: FontWeight.w600,
     ),
-    displaySmall: TextStyle(
+    displaySmall: const TextStyle(
       color: Color(0xFFB53D96),
       fontSize: 48,
       fontWeight: FontWeight.w600,
     ),
-    headlineMedium: TextStyle(
+    headlineMedium: const TextStyle(
       color: Color(0xFF24b70b),
       fontSize: 34,
       fontWeight: FontWeight.w400,
     ),
-    headlineSmall: TextStyle(
+    headlineSmall: const TextStyle(
       color: Color(0xFFA84448),
       fontSize: 24,
       fontWeight: FontWeight.w400,
     ),
-    titleLarge: TextStyle(
+    titleLarge: const TextStyle(
       color: Color(0xffffffff),
       fontSize: 20,
       fontWeight: FontWeight.w300,
     ),
-    bodyLarge: TextStyle(
+    bodyLarge: const TextStyle(
       color: Color(0xFF464545),
       fontSize: 16,
       fontWeight: FontWeight.w400,
     ),
-    bodyMedium: TextStyle(
+    bodyMedium: const TextStyle(
       color: Color(0xff3d21de),
       fontSize: 14,
       fontWeight: FontWeight.w500,
     ),
-    bodySmall: TextStyle(
+    bodySmall: const TextStyle(
       color: Color(0xff3d21de),
       fontSize: 12,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),
-    labelLarge: TextStyle(
+    labelLarge: const TextStyle(
       color: Color(0xff3d21de),
       fontSize: 14,
       fontWeight: FontWeight.w600,
     ),
     titleMedium: TextStyle(
-      color: Color(0xFF464545),
-      fontSize: 16,
-      fontWeight: FontWeight.w400,
+      color: ColorConstants.kHeadlineTextColor(),
+      fontSize: 24,
+      fontWeight: FontWeight.w600,
     ),
-    titleSmall: TextStyle(
+    titleSmall: const TextStyle(
       color: Color(0xff3d21de),
       fontSize: 14,
       fontWeight: FontWeight.w600,
     ),
-    labelSmall: TextStyle(
+    labelSmall: const TextStyle(
       color: Color(0xff3d21de),
       fontSize: 10,
       fontWeight: FontWeight.w400,
@@ -258,8 +259,8 @@ final ThemeData lightTheme = ThemeData(
       borderRadius: BorderRadius.all(Radius.circular(4.0)),
     ),
   ),
-  iconTheme: const IconThemeData(
-    color: Color(0xff3c20da),
+  iconTheme: IconThemeData(
+    color: ColorConstants.kIconColor(),
     opacity: 1,
     size: 24,
   ),

@@ -78,5 +78,7 @@ flutter:
   assets:
     - lib/assets/logo/
     - lib/assets/lottie/
+    - lib/assets/image/
+
 flutter_intl:
   enabled: true

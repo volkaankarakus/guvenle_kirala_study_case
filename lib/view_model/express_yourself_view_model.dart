@@ -10,4 +10,8 @@ class ExpressYourselfViewModel extends BaseViewModel {
     await Future.delayed(AppDefaults.kStandartLongDuration);
     super.setViewDidLoad(true);
   }
+
+  void popPage() {
+    super.appRouter.pop();
+  }
 }
