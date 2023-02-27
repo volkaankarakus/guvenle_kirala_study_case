@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:guvenle_kirala_study_case/app/locator/locator.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // ** Locator Initialize
+  setupLocator();
+  // ** Run App
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
