@@ -41,7 +41,7 @@ class BoxContainer extends StatelessWidget {
         ? Stack(
             children: [
               AnimatedContainer(
-                duration: Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
                 margin: const EdgeInsets.all(
                     AppDefaults.kStandartContentPaddingLow),
                 width: width,
@@ -60,7 +60,7 @@ class BoxContainer extends StatelessWidget {
                       ? [
                           BoxShadow(
                             color: hasError
-                                ? errorColor ?? Theme.of(context).errorColor
+                                ? errorColor ?? Theme.of(context).colorScheme.error
                                 : Theme.of(context).highlightColor,
                             blurRadius: AppDefaults.kStandartBlurRadius,
                             spreadRadius: AppDefaults.kStandartSpreadRadius,
@@ -93,7 +93,7 @@ class BoxContainer extends StatelessWidget {
                         ? [
                             BoxShadow(
                               color: hasError
-                                  ? errorColor ?? Theme.of(context).errorColor
+                                  ? errorColor ?? Theme.of(context).colorScheme.error
                                   : Theme.of(context).highlightColor,
                               blurRadius: AppDefaults.kStandartBlurRadius,
                               spreadRadius: AppDefaults.kStandartSpreadRadius,
@@ -106,7 +106,7 @@ class BoxContainer extends StatelessWidget {
                   child: Center(
                     child: Text(
                       count!,
-                      style: Theme.of(context).textTheme.headline1,
+                      style: Theme.of(context).textTheme.displayLarge,
                     ),
                   ),
                 ),
@@ -114,7 +114,7 @@ class BoxContainer extends StatelessWidget {
             ],
           )
         : AnimatedContainer(
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             margin:
                 const EdgeInsets.all(AppDefaults.kStandartContentPaddingLow),
             width: width,
@@ -132,7 +132,7 @@ class BoxContainer extends StatelessWidget {
                   ? [
                       BoxShadow(
                         color: hasError
-                            ? errorColor ?? Theme.of(context).errorColor
+                            ? errorColor ?? Theme.of(context).colorScheme.error
                             : Theme.of(context).highlightColor,
                         blurRadius: AppDefaults.kStandartBlurRadius,
                         spreadRadius: AppDefaults.kStandartSpreadRadius,

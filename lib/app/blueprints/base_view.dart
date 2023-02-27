@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:guvenle_kirala_study_case/app/blueprints/base_view_model.dart';
-import 'package:guvenle_kirala_study_case/widget/box_container.dart';
 import 'package:guvenle_kirala_study_case/widget/circle_card_widget.dart';
 import 'package:guvenle_kirala_study_case/widget/custom_circular_proggress_indicator.dart';
 import 'package:guvenle_kirala_study_case/widget/custom_transition_switcher.dart';
@@ -58,6 +57,7 @@ class BasePageView<T extends BaseViewModel> extends StatelessWidget {
             body: _PageLoadingWidget<T>(
               content: content,
               showCircleCard: showCircleCard,
+              showInitialLoading: showInitialLoading,
             ),
           )
         : _PageLoadingWidget<T>(
@@ -98,9 +98,7 @@ class __PageLoadingWidgetState<T extends BaseViewModel>
 
     return CustomTransitionSwitcher(
       child: !viewLoaded && widget.showInitialLoading
-          ? const BoxContainer(
-              child: CustomCircularProgressIndicator(),
-            )
+          ? const CustomCircularProgressIndicator()
           : _CircleLoadingWidget<T>(
               content: widget.content,
               showCircleCard: widget.showCircleCard,

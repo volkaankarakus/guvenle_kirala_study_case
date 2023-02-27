@@ -10,37 +10,61 @@
 //
 // ignore_for_file: type=lint
 
-part of 'router.dart';
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:auto_route/auto_route.dart' as _i3;
+import 'package:flutter/material.dart' as _i4;
 
-class $AppRouter extends RootStackRouter {
-  $AppRouter([GlobalKey<NavigatorState>? navigatorKey]) : super(navigatorKey);
+import '../../view/express_yourself_view.dart' as _i1;
+import '../../view/first_page_view.dart' as _i2;
+
+class AppRouter extends _i3.RootStackRouter {
+  AppRouter([_i4.GlobalKey<_i4.NavigatorState>? navigatorKey])
+      : super(navigatorKey);
 
   @override
-  final Map<String, PageFactory> pagesMap = {
-    FirstPageViewRoute.name: (routeData) {
-      return CustomPage<void>(
+  final Map<String, _i3.PageFactory> pagesMap = {
+    ExpressYourselfPageViewRoute.name: (routeData) {
+      return _i3.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const FirstPageView(),
-        transitionsBuilder: CustomRouteBuilderr.slideTransitionBuilder,
-        durationInMilliseconds: 400,
-        opaque: true,
-        barrierDismissible: false,
+        child: const _i1.ExpressYourselfView(),
       );
-    }
+    },
+    FirstPageViewRoute.name: (routeData) {
+      return _i3.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i2.FirstPageView(),
+      );
+    },
   };
 
   @override
-  List<RouteConfig> get routes => [
-        RouteConfig(
+  List<_i3.RouteConfig> get routes => [
+        _i3.RouteConfig(
+          ExpressYourselfPageViewRoute.name,
+          path: '/kirac-profili-kendinifade-et',
+        ),
+        _i3.RouteConfig(
           FirstPageViewRoute.name,
           path: '/',
-        )
+        ),
       ];
 }
 
 /// generated route for
-/// [FirstPageView]
-class FirstPageViewRoute extends PageRouteInfo<void> {
+/// [_i1.ExpressYourselfView]
+class ExpressYourselfPageViewRoute extends _i3.PageRouteInfo<void> {
+  const ExpressYourselfPageViewRoute()
+      : super(
+          ExpressYourselfPageViewRoute.name,
+          path: '/kirac-profili-kendinifade-et',
+        );
+
+  static const String name = 'ExpressYourselfPageViewRoute';
+}
+
+/// generated route for
+/// [_i2.FirstPageView]
+class FirstPageViewRoute extends _i3.PageRouteInfo<void> {
   const FirstPageViewRoute()
       : super(
           FirstPageViewRoute.name,
