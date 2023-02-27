@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:guvenle_kirala_study_case/app/app_configs.dart';
+import '../../service/logger_service.dart';
+import '../locator/locator.dart';
 
 abstract class BaseViewModel extends ChangeNotifier {
   //This can be used as a init loading status
@@ -19,6 +21,10 @@ abstract class BaseViewModel extends ChangeNotifier {
   //** Router Service
   @protected
   final appRouter = AppConfigs.appRouter;
+
+  //** Logger Service
+  @protected
+  final loggerService = locator<LoggerService>();
 
   //This can be used to set the viewLoading status
   @protected

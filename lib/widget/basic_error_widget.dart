@@ -13,16 +13,16 @@ class BasicErrorWidget extends StatelessWidget {
     return Center(
       child: Bubble(
         elevation: 10,
-        margin: BubbleEdges.all(10),
+        margin: const BubbleEdges.all(10),
         alignment: Alignment.center,
         nip: BubbleNip.no,
-        color: Color(0xFF495355),
+        color: const Color(0xFF495355),
         shadowColor: Theme.of(context).shadowColor,
         child: Text(
           error ?? "Bağlantı Hatası! İnternet bağlantınız kopmuş olabilir.",
           style: Theme.of(context)
               .textTheme
-              .bodyText1
+              .bodyLarge
               ?.copyWith(color: Theme.of(context).cardColor),
           textAlign: TextAlign.center,
         ),
