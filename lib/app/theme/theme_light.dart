@@ -136,9 +136,9 @@ final ThemeData lightTheme = ThemeData(
       fontSize: 16,
       fontWeight: FontWeight.w400,
     ),
-    bodyMedium: const TextStyle(
-      color: Color(0xff3d21de),
-      fontSize: 14,
+    bodyMedium: TextStyle(
+      color: ColorConstants.kDescriptionTextColor(),
+      fontSize: 20,
       fontWeight: FontWeight.w500,
     ),
     bodySmall: const TextStyle(
@@ -157,9 +157,9 @@ final ThemeData lightTheme = ThemeData(
       fontSize: 24,
       fontWeight: FontWeight.w600,
     ),
-    titleSmall: const TextStyle(
-      color: Color(0xff3d21de),
-      fontSize: 14,
+    titleSmall: TextStyle(
+      color: ColorConstants.kHeadlineTextColor(),
+      fontSize: 20,
       fontWeight: FontWeight.w600,
     ),
     labelSmall: const TextStyle(
