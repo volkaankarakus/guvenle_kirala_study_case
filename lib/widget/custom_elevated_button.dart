@@ -8,6 +8,7 @@ class CustomElevatedButton extends StatelessWidget {
   final Color borderColor;
   final String textString;
   final Color textColor;
+  final FontWeight textFontWeight;
   bool isSelected;
 
   CustomElevatedButton({
@@ -18,6 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
     required this.borderColor,
     required this.textString,
     required this.textColor,
+    this.textFontWeight = FontWeight.w500,
     this.isSelected = false,
   });
 
@@ -46,7 +48,7 @@ class CustomElevatedButton extends StatelessWidget {
                 textString,
                 style: TextStyle(
                   fontSize: 15,
-                  fontWeight: FontWeight.w500,
+                  fontWeight: textFontWeight,
                   color: textColor,
                 ),
               ),

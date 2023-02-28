@@ -141,9 +141,9 @@ final ThemeData lightTheme = ThemeData(
       fontSize: 20,
       fontWeight: FontWeight.w500,
     ),
-    bodySmall: const TextStyle(
-      color: Color(0xff3d21de),
-      fontSize: 12,
+    bodySmall: TextStyle(
+      color: ColorConstants.kBackgroundColor(),
+      fontSize: 18,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
     ),

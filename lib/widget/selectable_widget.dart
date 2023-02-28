@@ -3,7 +3,6 @@ import 'package:guvenle_kirala_study_case/app/app_defaults.dart';
 import 'package:guvenle_kirala_study_case/utils/reset_focus.dart';
 import 'package:guvenle_kirala_study_case/widget/box_container.dart';
 
-
 class SelectableWidget extends StatelessWidget {
   final Widget? child;
   final bool enabled;
@@ -16,6 +15,7 @@ class SelectableWidget extends StatelessWidget {
   final bool showCount;
   final String? count;
   final EdgeInsetsGeometry? padding;
+  final bool showShadow;
 
   const SelectableWidget({
     Key? key,
@@ -30,6 +30,7 @@ class SelectableWidget extends StatelessWidget {
     this.showCount = false,
     this.count,
     this.padding,
+    this.showShadow = true,
   }) : super(key: key);
 
   @override
@@ -54,6 +55,7 @@ class SelectableWidget extends StatelessWidget {
         hasError: hasError,
         showCount: showCount,
         count: count,
+        showShadow: showShadow,
         child: child,
       ),
     );

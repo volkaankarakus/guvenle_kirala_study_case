@@ -10,30 +10,38 @@ class FormWidget extends StatelessWidget {
   final Widget? prefixIcon;
   final Function(String)? onChanged;
   FocusNode? focusNode;
+  bool isCurrencyText;
 
-  FormWidget({
-    Key? key,
-    this.hasError = false,
-    this.keyboardType = TextInputType.emailAddress,
-    required this.labelText,
-    this.obsecure,
-   this.prefixIcon,
-    required this.onChanged,
-    this.focusNode,
-  }) : super(key: key);
+  FormWidget(
+      {Key? key,
+      this.hasError = false,
+      this.keyboardType = TextInputType.emailAddress,
+      required this.labelText,
+      this.obsecure,
+      this.prefixIcon,
+      required this.onChanged,
+      this.focusNode,
+      this.isCurrencyText = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
+    return Padding(
+      padding: const EdgeInsets.only(left: 12),
+      child: SizedBox(
+        width: 390,
+        child: Container(
           // height: 200,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: ColorConstants.kDescriptionTextColor(),
+            ),
           ),
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(4),
           child: SelectableWidget(
+            showShadow: false,
             color: Colors.white,
             hasError: hasError,
             child: TextField(
@@ -46,7 +54,11 @@ class FormWidget extends StatelessWidget {
               keyboardType: keyboardType,
               obscureText: obsecure ?? false,
               decoration: InputDecoration(
-                  suffixIcon: const Icon(Icons.question_mark_sharp),
+                  suffixIcon: !isCurrencyText
+                      ? const Icon(Icons.question_mark_sharp)
+                      : const Padding(
+                          padding: EdgeInsets.only(top: 12, left: 10),
+                          child: Text('TL')),
                   labelStyle:
                       TextStyle(color: ColorConstants.kDescriptionTextColor()),
                   border: InputBorder.none,
@@ -60,8 +72,8 @@ class FormWidget extends StatelessWidget {
               onChanged: onChanged,
             ),
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }

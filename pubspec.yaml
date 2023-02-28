@@ -58,11 +58,13 @@ dependencies:
   #Auto Size Text
   auto_size_text: ^3.0.0
 
-  #Cached Network Image
-  cached_network_image: ^3.2.3
+  #Custom Range Slider
+  syncfusion_flutter_sliders: ^20.4.51
+
+  #Can be used for async functions within the same page, but not currently used.
   flutter_easyloading: ^3.0.5
 
-dev_dependencies:
+dev_dependencies: 
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
