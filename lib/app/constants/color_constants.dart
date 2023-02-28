@@ -9,4 +9,6 @@ class ColorConstants extends Color {
   ColorConstants.kDescriptionTextColor() : super.fromRGBO(144, 142, 142, 1);
   ColorConstants.kElevatedButtonBorderColor()
       : super.fromRGBO(112, 112, 112, 0.2);
+  ColorConstants.kSelectedElevatedButtonColor()
+      : super.fromRGBO(191, 218, 255, 1);
 }

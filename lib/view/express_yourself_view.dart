@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guvenle_kirala_study_case/app/blueprints/base_view.dart';
 import 'package:guvenle_kirala_study_case/app/constants/color_constants.dart';
-import 'package:guvenle_kirala_study_case/model/custom_elevated_button_model.dart';
 import 'package:guvenle_kirala_study_case/view_model/express_yourself_view_model.dart';
 import 'package:guvenle_kirala_study_case/widget/custom_elevated_button.dart';
 import 'package:guvenle_kirala_study_case/widget/dynamic_sized_box_widget.dart';
@@ -120,15 +119,35 @@ class _ViewContent extends StatelessWidget {
                     const DynamicSizedBox(size: 12),
                     Column(
                       children: [
-                        ...elevatedButtons.map((e) => CustomElevatedButton(
-                              width: double.infinity,
-                              onPressed: () {},
-                              borderColor:
-                                  ColorConstants.kElevatedButtonBorderColor(),
-                              textString: e.textString,
-                              textColor: ColorConstants.kDescriptionTextColor(),
-                              isSelected: e.isSelected,
-                            ))
+                        ...context
+                            .read<ExpressYourselfViewModel>()
+                            .genderList
+                            .map((e) => CustomElevatedButton(
+                                  width: double.infinity,
+                                  backgroundColor: !(e.isSelected)
+                                      ? Colors.white
+                                      : ColorConstants
+                                          .kSelectedElevatedButtonColor(),
+                                  onPressed: () {
+                                    context
+                                        .read<ExpressYourselfViewModel>()
+                                        .tapToSelect(
+                                            modelList: context
+                                                .read<
+                                                    ExpressYourselfViewModel>()
+                                                .genderList,
+                                            model: e);
+                                  },
+                                  borderColor: !(e.isSelected)
+                                      ? ColorConstants
+                                          .kElevatedButtonBorderColor()
+                                      : ColorConstants.kBackgroundColor(),
+                                  textString: e.textString,
+                                  textColor: !(e.isSelected)
+                                      ? ColorConstants.kDescriptionTextColor()
+                                      : ColorConstants.kBackgroundColor(),
+                                  isSelected: e.isSelected,
+                                ))
                       ],
                     ),
                     const DynamicSizedBox(size: 30),
@@ -137,15 +156,35 @@ class _ViewContent extends StatelessWidget {
                     const DynamicSizedBox(size: 12),
                     Row(
                       children: [
-                        ...elevatedButtonsYesNo.map((e) => CustomElevatedButton(
-                              width: 180,
-                              onPressed: () {},
-                              borderColor:
-                                  ColorConstants.kElevatedButtonBorderColor(),
-                              textString: e.textString,
-                              textColor: ColorConstants.kDescriptionTextColor(),
-                              isSelected: e.isSelected,
-                            ))
+                        ...context
+                            .read<ExpressYourselfViewModel>()
+                            .anyPetFriendList
+                            .map((e) => CustomElevatedButton(
+                                  width: 180,
+                                  onPressed: () {
+                                    context
+                                        .read<ExpressYourselfViewModel>()
+                                        .tapToSelect(
+                                            modelList: context
+                                                .read<
+                                                    ExpressYourselfViewModel>()
+                                                .anyPetFriendList,
+                                            model: e);
+                                  },
+                                  borderColor: !(e.isSelected)
+                                      ? ColorConstants
+                                          .kElevatedButtonBorderColor()
+                                      : ColorConstants.kBackgroundColor(),
+                                  textString: e.textString,
+                                  textColor: !(e.isSelected)
+                                      ? ColorConstants.kDescriptionTextColor()
+                                      : ColorConstants.kBackgroundColor(),
+                                  backgroundColor: !(e.isSelected)
+                                      ? Colors.white
+                                      : ColorConstants
+                                          .kSelectedElevatedButtonColor(),
+                                  isSelected: e.isSelected,
+                                ))
                       ],
                     ),
                     const DynamicSizedBox(size: 30),
@@ -153,29 +192,61 @@ class _ViewContent extends StatelessWidget {
                     const DynamicSizedBox(size: 12),
                     Column(
                       children: [
-                        ...numberOfPetFriends.map((e) => CustomElevatedButton(
-                              width: double.infinity,
-                              onPressed: () {},
-                              borderColor:
-                                  ColorConstants.kElevatedButtonBorderColor(),
-                              textString: e.textString,
-                              textColor: ColorConstants.kDescriptionTextColor(),
-                              isSelected: e.isSelected,
-                            ))
+                        ...context
+                            .read<ExpressYourselfViewModel>()
+                            .numberOfPetFriendList
+                            .map((e) => CustomElevatedButton(
+                                  width: double.infinity,
+                                  onPressed: () {
+                                    context
+                                        .read<ExpressYourselfViewModel>()
+                                        .tapToSelect(
+                                            modelList: context
+                                                .read<
+                                                    ExpressYourselfViewModel>()
+                                                .numberOfPetFriendList,
+                                            model: e);
+                                  },
+                                  borderColor: !(e.isSelected)
+                                      ? ColorConstants
+                                          .kElevatedButtonBorderColor()
+                                      : ColorConstants.kBackgroundColor(),
+                                  textString: e.textString,
+                                  textColor: !(e.isSelected)
+                                      ? ColorConstants.kDescriptionTextColor()
+                                      : ColorConstants.kBackgroundColor(),
+                                  backgroundColor: !(e.isSelected)
+                                      ? Colors.white
+                                      : ColorConstants
+                                          .kSelectedElevatedButtonColor(),
+                                  isSelected: e.isSelected,
+                                ))
                       ],
                     ),
                     const DynamicSizedBox(size: 30),
                     const HeadlineTextWidget(
                         headlineText: 'Eğitim Durumunuz :'),
                     const DynamicSizedBox(size: 12),
-                    FormWidget(
-                      labelText: 'Lütfen seçiniz',
-                      onChanged: (p0) {},
+                    InkWell(
+                      onTap: () => context
+                          .read<ExpressYourselfViewModel>()
+                          .navigateToEducationStatuePage(),
+                      child: IgnorePointer(
+                        child: FormWidget(
+                          labelText: context
+                                  .read<ExpressYourselfViewModel>()
+                                  .profileModel
+                                  .educationStatus ??
+                              'Lütfen seçiniz',
+                          onChanged: (p0) {},
+                        ),
+                      ),
                     ),
                     const DynamicSizedBox(size: 30),
                     const HeadlineTextWidget(headlineText: 'Aylık Net Maaş :'),
                     const DynamicSizedBox(size: 12),
                     FormWidget(
+                      keyboardType: TextInputType.number,
                       isCurrencyText: true,
                       labelText: '25.000',
                       onChanged: (p0) {},
@@ -186,15 +257,35 @@ class _ViewContent extends StatelessWidget {
                     const DynamicSizedBox(size: 12),
                     Row(
                       children: [
-                        ...elevatedButtonsYesNo.map((e) => CustomElevatedButton(
-                              width: 180,
-                              onPressed: () {},
-                              borderColor:
-                                  ColorConstants.kElevatedButtonBorderColor(),
-                              textString: e.textString,
-                              textColor: ColorConstants.kDescriptionTextColor(),
-                              isSelected: e.isSelected,
-                            )),
+                        ...context
+                            .read<ExpressYourselfViewModel>()
+                            .extraIncomeYesNoList
+                            .map((e) => CustomElevatedButton(
+                                  width: 180,
+                                  onPressed: () {
+                                    context
+                                        .read<ExpressYourselfViewModel>()
+                                        .tapToSelect(
+                                            modelList: context
+                                                .read<
+                                                    ExpressYourselfViewModel>()
+                                                .extraIncomeYesNoList,
+                                            model: e);
+                                  },
+                                  borderColor: !(e.isSelected)
+                                      ? ColorConstants
+                                          .kElevatedButtonBorderColor()
+                                      : ColorConstants.kBackgroundColor(),
+                                  textString: e.textString,
+                                  textColor: !(e.isSelected)
+                                      ? ColorConstants.kDescriptionTextColor()
+                                      : ColorConstants.kBackgroundColor(),
+                                  backgroundColor: !(e.isSelected)
+                                      ? Colors.white
+                                      : ColorConstants
+                                          .kSelectedElevatedButtonColor(),
+                                  isSelected: e.isSelected,
+                                )),
                       ],
                     ),
                     const DynamicSizedBox(size: 30),
@@ -235,9 +326,14 @@ class _ViewContent extends StatelessWidget {
                       size: 12,
                     ),
                     FormWidget(
+                      keyboardType: TextInputType.number,
                       isCurrencyText: true,
                       labelText: '7.000',
-                      onChanged: (p0) {},
+                      onChanged: (p0) {
+                        context
+                            .read<ExpressYourselfViewModel>()
+                            .setCurrentRentAmount(rentAmount: p0);
+                      },
                     ),
                     const DynamicSizedBox(
                       size: 30,
@@ -255,7 +351,7 @@ class _ViewContent extends StatelessWidget {
                         builder: (context, value, _) {
                           return RangeSlider(
                             values: value,
-                            max: 6000,
+                            max: 100000,
                             min: 0,
                             activeColor: ColorConstants.kBackgroundColor(),
                             inactiveColor:
@@ -298,28 +394,36 @@ class _ViewContent extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          SizedBox(
-                            width: 200,
-                            child: FormWidget(
-                              isCurrencyText: true,
-                              labelText: context
-                                  .watch<ExpressYourselfViewModel>()
-                                  .values
-                                  .start
-                                  .toStringAsFixed(0),
-                              onChanged: (p0) {},
+                          IgnorePointer(
+                            ignoring: true,
+                            child: SizedBox(
+                              width: 200,
+                              child: FormWidget(
+                                keyboardType: TextInputType.number,
+                                isCurrencyText: true,
+                                labelText: context
+                                    .watch<ExpressYourselfViewModel>()
+                                    .values
+                                    .start
+                                    .toStringAsFixed(0),
+                                onChanged: (p0) {},
+                              ),
                             ),
                           ),
-                          SizedBox(
-                            width: 200,
-                            child: FormWidget(
-                              isCurrencyText: true,
-                              labelText: context
-                                  .watch<ExpressYourselfViewModel>()
-                                  .values
-                                  .end
-                                  .toStringAsFixed(0),
-                              onChanged: (p0) {},
+                          IgnorePointer(
+                            ignoring: true,
+                            child: SizedBox(
+                              width: 200,
+                              child: FormWidget(
+                                keyboardType: TextInputType.number,
+                                isCurrencyText: true,
+                                labelText: context
+                                    .watch<ExpressYourselfViewModel>()
+                                    .values
+                                    .end
+                                    .toStringAsFixed(0),
+                                onChanged: (p0) {},
+                              ),
                             ),
                           ),
                         ],

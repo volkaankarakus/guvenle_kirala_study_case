@@ -3,7 +3,10 @@ import 'package:guvenle_kirala_study_case/app/constants/color_constants.dart';
 
 class DescriptionTextWidget extends StatelessWidget {
   final String headlineText;
-  const DescriptionTextWidget({super.key, required this.headlineText});
+  const DescriptionTextWidget({
+    super.key,
+    required this.headlineText,
+  });
 
   @override
   Widget build(BuildContext context) {

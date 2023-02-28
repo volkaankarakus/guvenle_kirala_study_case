@@ -33,7 +33,7 @@ class FormBigWidget extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 600,
+          height: 400,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
