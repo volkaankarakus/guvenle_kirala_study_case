@@ -85,142 +85,135 @@ class _ViewContent extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: 180,
-                      height: 180,
-                      child: Image.asset(
-                          'lib/assets/image/image_unknown_user.png',
-                          fit: BoxFit.fitHeight),
-                    ),
-                    const DynamicSizedBox(size: 5),
-                    const HeadlineTextWidget(headlineText: 'Profil Fotoğrafı'),
-                    const DynamicSizedBox(size: 12),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12),
-                      child: Wrap(
-                        children: [
-                          Text(
-                            'Aydınlık ve belirgin bir profil fotoğrafı, başvurunuzu öne çıkarmak için oldukça önemlidir. :)',
-                            style: Theme.of(context).textTheme.bodyMedium,
-                          )
-                        ],
-                      ),
-                    ),
-                    const DynamicSizedBox(size: 15),
-                    CustomElevatedButton(
-                      width: 120,
-                      onPressed: () {},
-                      borderColor: ColorConstants.kBackgroundColor(),
-                      textString: 'Ekle',
-                      textColor: ColorConstants.kBackgroundColor(),
-                    ),
+                    const __PhotoAreaWidget(),
                     const DynamicSizedBox(size: 30),
                     const HeadlineTextWidget(headlineText: 'Cinsiyetiniz'),
                     const DynamicSizedBox(size: 12),
-                    Column(
-                      children: [
-                        ...context
-                            .read<ExpressYourselfViewModel>()
-                            .genderList
-                            .map((e) => CustomElevatedButton(
-                                  width: double.infinity,
-                                  backgroundColor: !(e.isSelected)
-                                      ? Colors.white
-                                      : ColorConstants
-                                          .kSelectedElevatedButtonColor(),
-                                  onPressed: () {
-                                    context
-                                        .read<ExpressYourselfViewModel>()
-                                        .tapToSelect(
-                                            modelList: context
-                                                .read<
-                                                    ExpressYourselfViewModel>()
-                                                .genderList,
-                                            model: e);
-                                  },
-                                  borderColor: !(e.isSelected)
-                                      ? ColorConstants
-                                          .kElevatedButtonBorderColor()
-                                      : ColorConstants.kBackgroundColor(),
-                                  textString: e.textString,
-                                  textColor: !(e.isSelected)
-                                      ? ColorConstants.kDescriptionTextColor()
-                                      : ColorConstants.kBackgroundColor(),
-                                  isSelected: e.isSelected,
-                                ))
-                      ],
-                    ),
+                    ...context
+                        .read<ExpressYourselfViewModel>()
+                        .genderList
+                        .map((e) => CustomElevatedButton(
+                              width: double.infinity,
+                              backgroundColor: !(e.isSelected)
+                                  ? Colors.white
+                                  : ColorConstants
+                                      .kSelectedElevatedButtonColor(),
+                              onPressed: () {
+                                context
+                                    .read<ExpressYourselfViewModel>()
+                                    .tapToSelect(
+                                        modelList: context
+                                            .read<ExpressYourselfViewModel>()
+                                            .genderList,
+                                        model: e);
+                              },
+                              borderColor: !(e.isSelected)
+                                  ? ColorConstants.kElevatedButtonBorderColor()
+                                  : ColorConstants.kBackgroundColor(),
+                              textString: e.textString,
+                              textColor: !(e.isSelected)
+                                  ? ColorConstants.kDescriptionTextColor()
+                                  : ColorConstants.kBackgroundColor(),
+                              isSelected: e.isSelected,
+                            )),
                     const DynamicSizedBox(size: 30),
-                    const HeadlineTextWidget(
-                        headlineText: 'Pet Dostunuz Var mı?'),
-                    const DynamicSizedBox(size: 12),
-                    Row(
-                      children: [
-                        ...context
-                            .read<ExpressYourselfViewModel>()
-                            .anyPetFriendList
-                            .map((e) => CustomElevatedButton(
-                                  width: 180,
-                                  onPressed: () {
-                                    context
-                                        .read<ExpressYourselfViewModel>()
-                                        .tapToSelect(
-                                            modelList: context
-                                                .read<
-                                                    ExpressYourselfViewModel>()
-                                                .anyPetFriendList,
-                                            model: e);
-                                  },
-                                  borderColor: !(e.isSelected)
-                                      ? ColorConstants
-                                          .kElevatedButtonBorderColor()
-                                      : ColorConstants.kBackgroundColor(),
-                                  textString: e.textString,
-                                  textColor: !(e.isSelected)
-                                      ? ColorConstants.kDescriptionTextColor()
-                                      : ColorConstants.kBackgroundColor(),
-                                  backgroundColor: !(e.isSelected)
-                                      ? Colors.white
-                                      : ColorConstants
-                                          .kSelectedElevatedButtonColor(),
-                                  isSelected: e.isSelected,
-                                ))
-                      ],
-                    ),
-                    const DynamicSizedBox(size: 30),
-                    const HeadlineTextWidget(headlineText: 'Pet Dost Sayısı'),
-                    const DynamicSizedBox(size: 12),
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ...context
-                            .read<ExpressYourselfViewModel>()
-                            .numberOfPetFriendList
-                            .map((e) => CustomElevatedButton(
-                                  width: double.infinity,
-                                  onPressed: () {
-                                    context
-                                        .read<ExpressYourselfViewModel>()
-                                        .tapToSelect(
-                                            modelList: context
-                                                .read<
-                                                    ExpressYourselfViewModel>()
-                                                .numberOfPetFriendList,
-                                            model: e);
-                                  },
-                                  borderColor: !(e.isSelected)
-                                      ? ColorConstants
-                                          .kElevatedButtonBorderColor()
-                                      : ColorConstants.kBackgroundColor(),
-                                  textString: e.textString,
-                                  textColor: !(e.isSelected)
-                                      ? ColorConstants.kDescriptionTextColor()
-                                      : ColorConstants.kBackgroundColor(),
-                                  backgroundColor: !(e.isSelected)
-                                      ? Colors.white
-                                      : ColorConstants
-                                          .kSelectedElevatedButtonColor(),
-                                  isSelected: e.isSelected,
-                                ))
+                        const HeadlineTextWidget(
+                            headlineText: 'Pet Dostunuz Var mı?'),
+                        const DynamicSizedBox(size: 12),
+                        Row(
+                          children: [
+                            ...context
+                                .read<ExpressYourselfViewModel>()
+                                .anyPetFriendList
+                                .map((e) => CustomElevatedButton(
+                                      width: 180,
+                                      onPressed: () {
+                                        context
+                                            .read<ExpressYourselfViewModel>()
+                                            .tapToSelect(
+                                                modelList: context
+                                                    .read<
+                                                        ExpressYourselfViewModel>()
+                                                    .anyPetFriendList,
+                                                model: e);
+                                      },
+                                      borderColor: !(e.isSelected)
+                                          ? ColorConstants
+                                              .kElevatedButtonBorderColor()
+                                          : ColorConstants.kBackgroundColor(),
+                                      textString: e.textString,
+                                      textColor: !(e.isSelected)
+                                          ? ColorConstants
+                                              .kDescriptionTextColor()
+                                          : ColorConstants.kBackgroundColor(),
+                                      backgroundColor: !(e.isSelected)
+                                          ? Colors.white
+                                          : ColorConstants
+                                              .kSelectedElevatedButtonColor(),
+                                      isSelected: e.isSelected,
+                                    ))
+                          ],
+                        ),
+                        const DynamicSizedBox(size: 30),
+                        Selector<ExpressYourselfViewModel, bool>(
+                          shouldRebuild: (_, __) => true,
+                          selector: (_, provider) =>
+                              provider.isPetSelectionAnswerYes,
+                          builder: (context, value, _) {
+                            if (value == false) {
+                              return const SizedBox.shrink();
+                            } else {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const HeadlineTextWidget(
+                                      headlineText: 'Pet Dost Sayısı'),
+                                  const DynamicSizedBox(size: 12),
+                                  Column(
+                                    children: [
+                                      ...context
+                                          .read<ExpressYourselfViewModel>()
+                                          .numberOfPetFriendList
+                                          .map((e) => CustomElevatedButton(
+                                                width: double.infinity,
+                                                onPressed: () {
+                                                  context
+                                                      .read<
+                                                          ExpressYourselfViewModel>()
+                                                      .tapToSelect(
+                                                          modelList: context
+                                                              .read<
+                                                                  ExpressYourselfViewModel>()
+                                                              .numberOfPetFriendList,
+                                                          model: e);
+                                                },
+                                                borderColor: !(e.isSelected)
+                                                    ? ColorConstants
+                                                        .kElevatedButtonBorderColor()
+                                                    : ColorConstants
+                                                        .kBackgroundColor(),
+                                                textString: e.textString,
+                                                textColor: !(e.isSelected)
+                                                    ? ColorConstants
+                                                        .kDescriptionTextColor()
+                                                    : ColorConstants
+                                                        .kBackgroundColor(),
+                                                backgroundColor: !(e.isSelected)
+                                                    ? Colors.white
+                                                    : ColorConstants
+                                                        .kSelectedElevatedButtonColor(),
+                                                isSelected: e.isSelected,
+                                              ))
+                                    ],
+                                  )
+                                ],
+                              );
+                            }
+                          },
+                        )
                       ],
                     ),
                     const DynamicSizedBox(size: 30),
@@ -243,98 +236,65 @@ class _ViewContent extends StatelessWidget {
                       ),
                     ),
                     const DynamicSizedBox(size: 30),
-                    const HeadlineTextWidget(headlineText: 'Aylık Net Maaş :'),
-                    const DynamicSizedBox(size: 12),
-                    FormWidget(
-                      keyboardType: TextInputType.number,
-                      isCurrencyText: true,
-                      labelText: '25.000',
-                      onChanged: (p0) {},
-                    ),
+                    const _NetMonthlySalaryWidget(),
                     const DynamicSizedBox(size: 30),
-                    const HeadlineTextWidget(
-                        headlineText: 'Ek Geliriniz Var mı?'),
-                    const DynamicSizedBox(size: 12),
-                    Row(
-                      children: [
-                        ...context
-                            .read<ExpressYourselfViewModel>()
-                            .extraIncomeYesNoList
-                            .map((e) => CustomElevatedButton(
-                                  width: 180,
-                                  onPressed: () {
-                                    context
-                                        .read<ExpressYourselfViewModel>()
-                                        .tapToSelect(
-                                            modelList: context
-                                                .read<
-                                                    ExpressYourselfViewModel>()
-                                                .extraIncomeYesNoList,
-                                            model: e);
-                                  },
-                                  borderColor: !(e.isSelected)
-                                      ? ColorConstants
-                                          .kElevatedButtonBorderColor()
-                                      : ColorConstants.kBackgroundColor(),
-                                  textString: e.textString,
-                                  textColor: !(e.isSelected)
-                                      ? ColorConstants.kDescriptionTextColor()
-                                      : ColorConstants.kBackgroundColor(),
-                                  backgroundColor: !(e.isSelected)
-                                      ? Colors.white
-                                      : ColorConstants
-                                          .kSelectedElevatedButtonColor(),
-                                  isSelected: e.isSelected,
-                                )),
-                      ],
-                    ),
-                    const DynamicSizedBox(size: 30),
-                    const HeadlineTextWidget(headlineText: 'Gelir Tipi :'),
-                    const DynamicSizedBox(
-                      size: 12,
-                    ),
-                    FormWidget(
-                      labelText: 'Lütfen seçiniz',
-                      onChanged: (p0) {},
-                    ),
-                    const DynamicSizedBox(
-                      size: 12,
-                    ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.question_mark_sharp,
-                            size: 18,
-                            color: ColorConstants.kBackgroundColor(),
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const HeadlineTextWidget(
+                              headlineText: 'Ek Geliriniz Var mı?'),
+                          const DynamicSizedBox(size: 12),
+                          Row(
+                            children: [
+                              ...context
+                                  .read<ExpressYourselfViewModel>()
+                                  .extraIncomeYesNoList
+                                  .map((e) => CustomElevatedButton(
+                                        width: 180,
+                                        onPressed: () {
+                                          context
+                                              .read<ExpressYourselfViewModel>()
+                                              .tapToSelect(
+                                                  modelList: context
+                                                      .read<
+                                                          ExpressYourselfViewModel>()
+                                                      .extraIncomeYesNoList,
+                                                  model: e);
+                                        },
+                                        borderColor: !(e.isSelected)
+                                            ? ColorConstants
+                                                .kElevatedButtonBorderColor()
+                                            : ColorConstants.kBackgroundColor(),
+                                        textString: e.textString,
+                                        textColor: !(e.isSelected)
+                                            ? ColorConstants
+                                                .kDescriptionTextColor()
+                                            : ColorConstants.kBackgroundColor(),
+                                        backgroundColor: !(e.isSelected)
+                                            ? Colors.white
+                                            : ColorConstants
+                                                .kSelectedElevatedButtonColor(),
+                                        isSelected: e.isSelected,
+                                      )),
+                            ],
                           ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: Text('Gelir Ekle',
-                              style: Theme.of(context).textTheme.bodySmall),
-                        ),
-                      ],
-                    ),
+                          Selector<ExpressYourselfViewModel, bool>(
+                            shouldRebuild: (_, __) => true,
+                            selector: (_, provider) =>
+                                provider.isExtraIncomeAnswerYes,
+                            builder: (context, value, _) {
+                              if (value == false) {
+                                return const SizedBox.shrink();
+                              } else {
+                                return const _IncomeTypeWidget();
+                              }
+                            },
+                          )
+                        ]),
                     const DynamicSizedBox(
                       size: 30,
                     ),
-                    const HeadlineTextWidget(
-                        headlineText: 'Mevcut Kira Miktarınız'),
-                    const DynamicSizedBox(
-                      size: 12,
-                    ),
-                    FormWidget(
-                      keyboardType: TextInputType.number,
-                      isCurrencyText: true,
-                      labelText: '7.000',
-                      onChanged: (p0) {
-                        context
-                            .read<ExpressYourselfViewModel>()
-                            .setCurrentRentAmount(rentAmount: p0);
-                      },
-                    ),
+                    const _CurrentlyRentAmountWidget(),
                     const DynamicSizedBox(
                       size: 30,
                     ),
@@ -482,7 +442,11 @@ class _ViewContent extends StatelessWidget {
                     const DynamicSizedBox(size: 30),
                     CustomElevatedButton(
                       width: 200,
-                      onPressed: () {},
+                      onPressed: () {
+                        context
+                            .read<ExpressYourselfViewModel>()
+                            .submitDataToModel();
+                      },
                       backgroundColor: ColorConstants.kBackgroundColor(),
                       borderColor: ColorConstants.kBackgroundColor(),
                       textString: 'Kaydet',
@@ -497,6 +461,160 @@ class _ViewContent extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _CurrentlyRentAmountWidget extends StatelessWidget {
+  const _CurrentlyRentAmountWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const HeadlineTextWidget(headlineText: 'Mevcut Kira Miktarınız'),
+        const DynamicSizedBox(
+          size: 12,
+        ),
+        FormWidget(
+          keyboardType: TextInputType.number,
+          isCurrencyText: true,
+          labelText: '7.000',
+          onChanged: (p0) {
+            context
+                .read<ExpressYourselfViewModel>()
+                .setCurrentRentAmount(rentAmount: p0);
+          },
+        )
+      ],
+    );
+  }
+}
+
+class _IncomeTypeWidget extends StatelessWidget {
+  const _IncomeTypeWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const DynamicSizedBox(size: 30),
+        const HeadlineTextWidget(headlineText: 'Gelir Tipi :'),
+        const DynamicSizedBox(
+          size: 12,
+        ),
+        FormWidget(
+          labelText: 'Lütfen seçiniz',
+          onChanged: (p0) {},
+        ),
+        const DynamicSizedBox(
+          size: 12,
+        ),
+        Row(
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.question_mark_sharp,
+                size: 18,
+                color: ColorConstants.kBackgroundColor(),
+              ),
+            ),
+            InkWell(
+              onTap: () {},
+              child: Text('Gelir Ekle',
+                  style: Theme.of(context).textTheme.bodySmall),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+}
+
+class _NetMonthlySalaryWidget extends StatelessWidget {
+  const _NetMonthlySalaryWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const HeadlineTextWidget(headlineText: 'Aylık Net Maaş :'),
+        const DynamicSizedBox(size: 12),
+        FormWidget(
+          keyboardType: TextInputType.number,
+          isCurrencyText: true,
+          labelText: '25.000',
+          onChanged: (p0) {},
+        )
+      ],
+    );
+  }
+}
+
+class _GenderWidget extends StatelessWidget {
+  const _GenderWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [],
+    );
+  }
+}
+
+class __PhotoAreaWidget extends StatelessWidget {
+  const __PhotoAreaWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      SizedBox(
+        width: 180,
+        height: 180,
+        child: Image.asset('lib/assets/image/image_unknown_user.png',
+            fit: BoxFit.fitHeight),
+      ),
+      const DynamicSizedBox(size: 5),
+      const HeadlineTextWidget(headlineText: 'Profil Fotoğrafı'),
+      const DynamicSizedBox(size: 12),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Wrap(
+          children: [
+            Text(
+              'Aydınlık ve belirgin bir profil fotoğrafı, başvurunuzu öne çıkarmak için oldukça önemlidir. :)',
+              style: Theme.of(context).textTheme.bodyMedium,
+            )
+          ],
+        ),
+      ),
+      const DynamicSizedBox(size: 15),
+      CustomElevatedButton(
+        width: 120,
+        onPressed: () {
+          //context.read<ExpressYourselfViewModel>().openFiles();
+        },
+        borderColor: ColorConstants.kBackgroundColor(),
+        textString: 'Ekle',
+        textColor: ColorConstants.kBackgroundColor(),
+      )
+    ]);
+  }
+}
+
+class _NumberOfPetWidget extends StatelessWidget {
+  const _NumberOfPetWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: const [],
     );
   }
 }

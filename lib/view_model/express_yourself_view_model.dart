@@ -7,7 +7,9 @@ import 'package:guvenle_kirala_study_case/model/profile_model.dart';
 
 class ExpressYourselfViewModel extends BaseViewModel {
   @override
-  void disposeModel() {}
+  void disposeModel() {
+    super.dispose();
+  }
 
   @override
   Future<void> getData() async {
@@ -17,6 +19,7 @@ class ExpressYourselfViewModel extends BaseViewModel {
     super.setViewDidLoad(true);
   }
 
+  // ** Pop Page
   void popPage() {
     super.appRouter.pop();
   }
@@ -34,6 +37,14 @@ class ExpressYourselfViewModel extends BaseViewModel {
     CustomElevatedButtonModel(textString: 'Evet'),
     CustomElevatedButtonModel(textString: 'Hayır'),
   ];
+
+  // ** Pet Selection Answer Getter
+  bool get isPetSelectionAnswerYes => anyPetFriendList
+              .firstWhere((element) => element.textString == 'Evet')
+              .isSelected ==
+          true
+      ? true
+      : false;
 
   // ** Number Of Pet Friend List
   List<CustomElevatedButtonModel> numberOfPetFriendList =
@@ -59,6 +70,14 @@ class ExpressYourselfViewModel extends BaseViewModel {
     CustomElevatedButtonModel(textString: 'Hayır'),
   ];
 
+  // ** Extra Income Selection Answer Getter
+  bool get isExtraIncomeAnswerYes => extraIncomeYesNoList
+              .firstWhere((element) => element.textString == 'Evet')
+              .isSelected ==
+          true
+      ? true
+      : false;
+
   // ** onTap To Select
   void tapToSelect(
       {required List<CustomElevatedButtonModel> modelList,
@@ -79,31 +98,38 @@ class ExpressYourselfViewModel extends BaseViewModel {
   void submitDataToModel() {
     profileModel
       ..gender = genderList
-          .firstWhere((element) => element.isSelected == true)
+          .firstWhere((element) => element.isSelected == true,
+              orElse: () => CustomElevatedButtonModel(textString: ''))
           .textString
       ..isHavePetFriends = anyPetFriendList
-                  .firstWhere((element) => element.isSelected == true)
+                  .firstWhere((element) => element.isSelected == true,
+                      orElse: () => CustomElevatedButtonModel(textString: ''))
                   .textString ==
               'Evet'
           ? true
           : false
       ..numberOfPetFriends = numberOfPetFriendList
-          .firstWhere((element) => element.isSelected == true)
+          .firstWhere((element) => element.isSelected == true,
+              orElse: () => CustomElevatedButtonModel(textString: ''))
           .textString
       ..educationStatus = educationStatueList
-          .firstWhere((element) => element.isSelected == true)
+          .firstWhere((element) => element.isSelected == true,
+              orElse: () => CustomElevatedButtonModel(textString: ''))
           .textString
       ..isHaveExtraIncome = extraIncomeYesNoList
-                  .firstWhere((element) => element.isSelected == true)
+                  .firstWhere((element) => element.isSelected == true,
+                      orElse: () => CustomElevatedButtonModel(textString: ''))
                   .textString ==
               'Evet'
           ? true
           : false
       ..desiredMinRentAmount = _values.start.toStringAsFixed(0)
       ..desiredMaxRentAmount = _values.end.toStringAsFixed(0);
+    
+    popPage();
   }
 
-  // ** RANGE SLIDER
+  // ** Range Slider
   final double _rangeStart = 30000;
   double get rangeStart => _rangeStart;
 
@@ -121,7 +147,7 @@ class ExpressYourselfViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  // ** EXPRESS YOURSELF BIGFORMWIDGET
+  // ** Big Form Widget
   String _value = '';
   void setValue(String value) {
     _value = value;
@@ -131,27 +157,26 @@ class ExpressYourselfViewModel extends BaseViewModel {
 
   int get enteredLetterLength => _value.length;
 
-  // ** UPDATE DATE
+  // ** Update Date
   final DateTime _updatedDate = DateTime(2022, 11, 19);
   DateTime? get updatedDate => _updatedDate;
 
-  // ** SET MONTLY SALARY
+  // ** Monthly Salary Setter
   void setNetMonthlySalary({required String monthlySalary}) {
     profileModel.netMonthlySalary = monthlySalary;
     notifyListeners();
   }
 
-  // ** SET CURRENT RENT AMOUNT
+  // ** Current Rent Amount Setter
   void setCurrentRentAmount({required String rentAmount}) {
     profileModel.currentRentAmount = rentAmount;
     notifyListeners();
   }
 
-  // ** SET EDUCATION STATUE
-  void setEducationStatue(
-      {required CustomElevatedButtonModel model}) async {
+  // ** Education Statue Setter
+  void setEducationStatue({required CustomElevatedButtonModel model}) async {
     profileModel.educationStatus = model.textString;
-     Future.delayed(const Duration(seconds: 1));
+    Future.delayed(const Duration(seconds: 1));
     popPage();
     notifyListeners();
   }
@@ -160,4 +185,32 @@ class ExpressYourselfViewModel extends BaseViewModel {
   Future<void> navigateToEducationStatuePage() async {
     await super.appRouter.push(EducationStatueViewRoute(provider: this));
   }
+
+  // // ** Platform File
+  // List<PlatformFile> files = [];
+
+  // // ** OPEN FILE
+  // Future<void> openFiles() async {
+  //   FilePickerResult? resultFile = await FilePicker.platform.pickFiles(
+  //     allowMultiple: true,
+  //     type: FileType.custom,
+  //     allowedExtensions: ['jpg', 'pdf', 'doc'],
+  //   );
+  //   if (resultFile == null) {
+  //     return;
+  //   }
+  //   files = resultFile.files;
+  //   notifyListeners();
+  // }
+
+  // // ** FILE SIZE
+  // String? showFileSize(PlatformFile file) {
+  //   double kb = file.size / 1024;
+  //   double mb = kb / 1024;
+  //   String size = (mb >= 1)
+  //       ? '${mb.toStringAsFixed(2)} MB'
+  //       : '${kb.toStringAsFixed(2)} KB';
+
+  //   return size;
+  // }
 }

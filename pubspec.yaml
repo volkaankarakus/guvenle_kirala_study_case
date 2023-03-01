@@ -6,7 +6,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.18.6 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -58,13 +58,22 @@ dependencies:
   #Auto Size Text
   auto_size_text: ^3.0.0
 
-  #Custom Range Slider
-  syncfusion_flutter_sliders: ^20.4.51
+
+  #Converting between Dart strings and C strings encoded with UTF-8 and UTF-16
+  ffi: ^2.0.1
+
+  #File Picker
+  file_picker: ^5.2.0+1
+
+  #Open file
+  better_open_file: ^3.6.4
 
   #Can be used for async functions within the same page, but not currently used.
   flutter_easyloading: ^3.0.5
 
-dev_dependencies: 
+
+
+dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
