@@ -125,7 +125,7 @@ class ExpressYourselfViewModel extends BaseViewModel {
           : false
       ..desiredMinRentAmount = _values.start.toStringAsFixed(0)
       ..desiredMaxRentAmount = _values.end.toStringAsFixed(0);
-    
+
     popPage();
   }
 

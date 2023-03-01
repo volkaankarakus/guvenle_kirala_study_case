@@ -50,7 +50,7 @@ class EducationStatueView extends StatelessWidget {
               left: 100,
               child: HeadlineTextWidget(headlineText: 'Eğitim Durumunuz'),
             ),
-            Positioned(
+            const Positioned(
               top: 160,
               left: 70,
               child: DescriptionTextWidget(
@@ -64,12 +64,12 @@ class EducationStatueView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ...context
-                        .read<ExpressYourselfViewModel>()
+                        .watch<ExpressYourselfViewModel>()
                         .educationStatueList
                         .sublist(
                             0,
                             context
-                                    .read<ExpressYourselfViewModel>()
+                                    .watch<ExpressYourselfViewModel>()
                                     .educationStatueList
                                     .length -
                                 1)
@@ -84,14 +84,14 @@ class EducationStatueView extends StatelessWidget {
                             .read<ExpressYourselfViewModel>()
                             .setEducationStatue(
                                 model: context
-                                    .read<ExpressYourselfViewModel>()
+                                    .watch<ExpressYourselfViewModel>()
                                     .educationStatueList
                                     .last),
                         child: Column(children: [
                           const DynamicSizedBox(size: 3),
                           DescriptionTextWidget(
                               headlineText: context
-                                  .read<ExpressYourselfViewModel>()
+                                  .watch<ExpressYourselfViewModel>()
                                   .educationStatueList
                                   .last
                                   .textString),

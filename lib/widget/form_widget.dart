@@ -29,7 +29,7 @@ class FormWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 12),
       child: SizedBox(
-        width: 390,
+        width: MediaQuery.of(context).size.width * 0.89,
         child: Container(
           // height: 200,
           decoration: BoxDecoration(
