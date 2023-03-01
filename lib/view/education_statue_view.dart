@@ -57,48 +57,27 @@ class EducationStatueView extends StatelessWidget {
                   headlineText: 'Eğitim durumunuzu seçiniz..'),
             ),
             Positioned.fill(
-                top: 220,
+                top: 150,
                 left: 15,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ...context
-                        .watch<ExpressYourselfViewModel>()
-                        .educationStatueList
-                        .sublist(
-                            0,
-                            context
-                                    .watch<ExpressYourselfViewModel>()
-                                    .educationStatueList
-                                    .length -
-                                1)
-                        .map((e) => _EducationStatueItemWidget(
-                            onTap: () => context
-                                .read<ExpressYourselfViewModel>()
-                                .setEducationStatue(model: e),
-                            model: e)),
-                    ...[
-                      InkWell(
-                        onTap: () => context
-                            .read<ExpressYourselfViewModel>()
-                            .setEducationStatue(
-                                model: context
-                                    .watch<ExpressYourselfViewModel>()
-                                    .educationStatueList
-                                    .last),
-                        child: Column(children: [
-                          const DynamicSizedBox(size: 3),
-                          DescriptionTextWidget(
-                              headlineText: context
-                                  .watch<ExpressYourselfViewModel>()
-                                  .educationStatueList
-                                  .last
-                                  .textString),
-                        ]),
-                      ),
-                    ]
-                  ],
+                child: ListView.separated(
+                  itemCount: context
+                      .watch<ExpressYourselfViewModel>()
+                      .educationStatueList
+                      .length,
+                  separatorBuilder: (context, index) {
+                    return const Divider();
+                  },
+                  itemBuilder: (context, index) {
+                    final item = context
+                        .read<ExpressYourselfViewModel>()
+                        .educationStatueList[index];
+                    return _EducationStatueItemWidget(
+                      onTap: () => context
+                          .read<ExpressYourselfViewModel>()
+                          .setEducationStatue(model: item),
+                      model: item,
+                    );
+                  },
                 )),
           ],
         );
